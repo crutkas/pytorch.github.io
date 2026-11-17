@@ -58,6 +58,18 @@ To install PyTorch via pip, and do have a [CUDA-capable](https://developer.nvidi
 Then, run the command that is presented to you.
 
 
+### Optional third-party provisioning preview (fork review only)
+
+The [personal-fork Microsoft DevConfig PREVIEW](https://github.com/crutkas/WindowsDeveloperConfig-oem/pull/2) is an optional, third-party experiment for an isolated Python environment and hardware-aware PyTorch setup. It is not a Microsoft-signed release, a PyTorch recommendation, or a replacement for the selector and pip instructions above. It uses its own Python 3.13 environment; it does not change this page's Python requirements or establish official support for additional platforms or backends.
+
+Review the [fork-only guide](https://github.com/crutkas/WindowsDeveloperConfig-oem/blob/crutkas-devconfig-fork-only-workloads/src/docs/windows-onboarding-preview.md), package terms, and [hardware/validation limits](https://github.com/crutkas/WindowsDeveloperConfig-oem/blob/crutkas-devconfig-fork-only-workloads/src/docs/ai-workloads.md#validation-status) before running anything. From that reviewed fork checkout, in an approved disposable Windows development environment with the documented prerequisites:
+
+```powershell
+.\src\Workloads\install-source.ps1 -Workload pytorch
+```
+
+This installs software; it is not a dry run. Compatible GPU drivers remain a prerequisite and are never automatically changed. Backend selection is hardware-dependent, not a guarantee of acceleration. The fork reports end-to-end testing on Windows ARM64 NVIDIA RTX Spark using a pinned NVIDIA preview stack, not general ARM GPU support. AMD ROCm and Intel XPU paths are x64-only and still await physical-hardware validation; there is no native Qualcomm PyTorch accelerator path. Real-hardware provisioning remains largely unverified. These preview boundaries are not PyTorch support claims; continue to use PyTorch's selector and platform guidance for supported installation choices.
+
 ## Verification
 {: #windows-verification}
 
